@@ -2,6 +2,7 @@ package com.john.titanic.service
 
 import com.john.titanic.domain.entities.Passenger
 import com.john.titanic.domain.repository.PassengerRepository
+import com.john.titanic.domain.repository.PassengerSpecifications
 import com.john.titanic.presentation.dto.PagedPassengerDto
 import com.john.titanic.presentation.dto.PassengerDto
 import org.springframework.data.domain.Page
@@ -14,12 +15,12 @@ class PassengerService(
 ) {
 
     fun getSurvivedPassenger(
-        survived: Boolean,
-        pClass: Int,
+        survived: Boolean?,
+        pClass: Int?,
         pageable: Pageable): PagedPassengerDto {
 
 
-        return passengerRepository.findBySurvivedAndPclass(survived, pClass, pageable).toPagedPassengerDto()
+        return passengerRepository.findAll(PassengerSpecifications.withSurvivedAndPclass(survived, pClass), pageable).toPagedPassengerDto()
     }
 }
 
@@ -45,7 +46,7 @@ private fun Page<Passenger>.toPagedPassengerDto(): PagedPassengerDto {
         totalElements = totalElements.toString(),
         pageSize = size.toString(),
         currentPage = pageable.pageNumber.toString(),
-        totalPages = totalPages.toString()
+        totalPages = (totalPages - 1).toString()
 
     )
 }
