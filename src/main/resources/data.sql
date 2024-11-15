@@ -1,0 +1,1 @@
+INSERT INTO PASSENGER SELECT * FROM CSVREAD('C:/Users/jhona/IdeaProjects/TitanicApi/src/main/resources/titanic.csv');
