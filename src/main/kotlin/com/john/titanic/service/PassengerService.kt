@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PassengerService(
-    private val passengerRepository: PassengerRepository
+     val passengerRepository: PassengerRepository
 ) {
 
     fun getSurvivedPassenger(
