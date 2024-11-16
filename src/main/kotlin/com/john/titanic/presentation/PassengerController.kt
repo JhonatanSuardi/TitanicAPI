@@ -2,8 +2,6 @@ package com.john.titanic.presentation
 
 import com.john.titanic.service.PassengerService
 import jakarta.validation.Valid
-import jakarta.validation.constraints.AssertFalse
-import jakarta.validation.constraints.AssertTrue
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
 import org.springframework.data.domain.PageRequest
