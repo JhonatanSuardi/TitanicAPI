@@ -10,27 +10,29 @@ class Mapper {
 
 fun Page<Passenger>.toPagedPassengerDto(): PagedPassengerDto {
     return PagedPassengerDto(
-
         passengerDto = this.content.map {
-            PassengerDto(
-                id = it.id,
-                survived = it.survived,
-                pclass = it.pclass,
-                name = it.name,
-                sex = it.sex,
-                age = it.age,
-                sibSp = it.sibSp,
-                parch = it.parch,
-                ticket = it.ticket,
-                fare = it.fare,
-                cabin = it.cabin,
-                embarked = it.embarked
-            )
+            it.toPassengerDto()
         },
         totalElements = totalElements.toString(),
         pageSize = size.toString(),
         currentPage = pageable.pageNumber.toString(),
         totalPages = (totalPages - 1).toString()
+    )
+}
 
+fun Passenger.toPassengerDto(): PassengerDto {
+    return PassengerDto(
+        id = this.id,
+        survived = this.survived,
+        pclass = this.pclass,
+        name = this.name,
+        sex = this.sex,
+        age = this.age,
+        sibSp = this.sibSp,
+        parch = this.parch,
+        ticket = this.ticket,
+        fare = this.fare,
+        cabin = this.cabin,
+        embarked = this.embarked
     )
 }

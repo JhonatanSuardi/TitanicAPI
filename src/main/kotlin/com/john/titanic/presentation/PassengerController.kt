@@ -2,17 +2,12 @@ package com.john.titanic.presentation
 
 import com.john.titanic.presentation.dto.PassengerDto
 import com.john.titanic.service.PassengerService
-import jakarta.validation.Valid
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/passengers")
@@ -26,7 +21,6 @@ class PassengerController(
         @RequestParam
         survived: Boolean?,
         @RequestParam
-        @Valid
         @Max(value = 3, message = "The maximum value for pclass must be at most 3.")
         @Min(value = 1, message = "The minimum value for pclass must be at most 1.")
         pclass: Int?,

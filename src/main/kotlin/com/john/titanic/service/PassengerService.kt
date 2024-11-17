@@ -1,9 +1,9 @@
 package com.john.titanic.service
 
-import com.john.titanic.domain.entities.Passenger
 import com.john.titanic.domain.repository.PassengerRepository
 import com.john.titanic.domain.repository.PassengerSpecifications
 import com.john.titanic.infrastructure.mapper.toPagedPassengerDto
+import com.john.titanic.infrastructure.mapper.toPassengerDto
 import com.john.titanic.presentation.dto.PagedPassengerDto
 import com.john.titanic.presentation.dto.PassengerDto
 import org.springframework.data.domain.Pageable
@@ -20,8 +20,9 @@ class PassengerService(
         pClass: Int?,
         pageable: Pageable): PagedPassengerDto {
 
-
-        return passengerRepository.findAll(PassengerSpecifications.withSurvivedAndPclass(survived, pClass), pageable).toPagedPassengerDto()
+        return passengerRepository.findAll(PassengerSpecifications
+            .withSurvivedAndPclass(survived, pClass), pageable)
+            .toPagedPassengerDto()
     }
 
     fun getPassengersById(passengerId: Long): PassengerDto {
@@ -33,20 +34,5 @@ class PassengerService(
     }
 }
 
-private fun Passenger.toPassengerDto(): PassengerDto {
-    return PassengerDto(
-        id = this.id,
-        survived = this.survived,
-        pclass = this.pclass,
-        name = this.name,
-        sex = this.sex,
-        age = this.age,
-        sibSp = this.sibSp,
-        parch = this.parch,
-        ticket = this.ticket,
-        fare = this.fare,
-        cabin = this.cabin,
-        embarked = this.embarked
-    )
-}
+
 
