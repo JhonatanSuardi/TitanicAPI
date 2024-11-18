@@ -1,13 +1,12 @@
 package com.john.titanic.service
 
 import arrow.core.EmptyValue
-import com.john.titanic.domain.repository.PassengerRepository
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import org.springframework.data.domain.PageRequest
 
 @SpringBootTest
@@ -15,9 +14,6 @@ class PassengerServiceTest {
 
     @Autowired
     private lateinit var service: PassengerService
-
-    @Autowired
-    private lateinit var apiRepository: PassengerRepository
 
     @Test
     fun shouldGetAnApiByIDWithValidId() {
