@@ -1,4 +1,4 @@
-# 🛳️ Titanic Passenger API
+# 🛳️ Titanic API
 A Spring Boot-based RESTful API to retrieve data about Titanic passengers. This project demonstrates clean code practices, modern Kotlin techniques, and API validation.
 
 ---
