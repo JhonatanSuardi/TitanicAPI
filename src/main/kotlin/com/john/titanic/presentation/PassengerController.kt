@@ -10,7 +10,7 @@
     import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/v1/passengers")
+@RequestMapping("/passengers")
 @Validated
 class PassengerController(
     private val passengerService: PassengerService
@@ -30,7 +30,7 @@ class PassengerController(
 
             val pageable = PageRequest.of(page, size)
 
-            passengerService.getPassengers(survived, pclass, pageable).takeIf { it.passengerDto.isNotEmpty() }
+            passengerService.getPassengers(survived, pclass, pageable).takeIf { it.passengersDto.isNotEmpty() }
                 ?.run { return ResponseEntity.ok(this) } ?: return ResponseEntity.noContent().build()
 
         }

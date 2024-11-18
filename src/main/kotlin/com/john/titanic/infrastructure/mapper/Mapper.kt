@@ -10,7 +10,7 @@ class Mapper {
 
 fun Page<Passenger>.toPagedPassengerDto(): PagedPassengerDto {
     return PagedPassengerDto(
-        passengerDto = this.content.map {
+        passengersDto = this.content.map {
             it.toPassengerDto()
         },
         totalElements = totalElements.toString(),
